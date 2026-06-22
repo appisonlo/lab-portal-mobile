@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>雷速 · 产品说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f1f7fa;
+            color: #1f2d3a;
+            line-height: 1.7;
+            padding: 0 1rem 3rem;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* 标题区 – 卡片网格背景 */
+        .hero-unit {
+            background: linear-gradient(145deg, #e4f1f5 0%, #d5e9ef 100%);
+            border-radius: 2.5rem 2.5rem 1.5rem 1.5rem;
+            padding: 3.5rem 2rem 2.8rem;
+            margin: 2rem 0 2.5rem;
+            box-shadow: 0 10px 25px -8px rgba(30, 80, 90, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-unit::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(20, 140, 130, 0.04) 0px, transparent 60px),
+                radial-gradient(circle at 90% 70%, rgba(0, 170, 160, 0.05) 0px, transparent 80px),
+                repeating-linear-gradient(45deg, rgba(0,130,120,0.02) 0px, rgba(0,130,120,0.02) 1px, transparent 1px, transparent 20px);
+            pointer-events: none;
+        }
+
+        .hero-unit h1 {
+            font-size: 2.4rem;
+            font-weight: 520;
+            letter-spacing: -0.02em;
+            color: #0b3b44;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-unit .sub {
+            font-size: 1.15rem;
+            color: #1e5a63;
+            max-width: 36rem;
+            position: relative;
+            z-index: 2;
+            line-height: 1.6;
+        }
+
+        .hero-unit .sub a {
+            color: #12736d;
+            text-decoration: underline;
+            text-decoration-thickness: 0.08em;
+            text-underline-offset: 3px;
+            font-weight: 500;
+        }
+
+        .hero-unit .sub a:hover {
+            color: #0a504b;
+            text-decoration-color: #2fa399;
+        }
+
+        /* 网格卡片区 – 蓝绿点缀 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin: 2.2rem 0 2.8rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 1.8rem;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 5px 14px rgba(50, 100, 105, 0.06);
+            transition: transform 0.2s, box-shadow 0.25s;
+            border: 1px solid rgba(90, 160, 155, 0.10);
+            position: relative;
+            backdrop-filter: blur(2px);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0, 120, 110, 0.15);
+            border-color: rgba(40, 150, 140, 0.20);
+        }
+
+        .card-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #d5f0ed;
+            border-radius: 30px;
+            margin-bottom: 1.1rem;
+            color: #0c6c64;
+            font-size: 1.6rem;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 520;
+            margin-bottom: 0.7rem;
+            color: #143d44;
+            letter-spacing: -0.01em;
+        }
+
+        .card p {
+            font-size: 0.98rem;
+            color: #2e4a50;
+            margin-bottom: 0.2rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            margin-top: 0.8rem;
+            background: #e0f2f0;
+            color: #095c54;
+            font-size: 0.75rem;
+            padding: 0.15rem 0.9rem;
+            border-radius: 30px;
+            font-weight: 450;
+            letter-spacing: 0.02em;
+        }
+
+        /* 使用建议 & 可信提示 – 双列 */
+        .double-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 2rem 0 2.2rem;
+        }
+
+        .insight-box {
+            background: #ffffffd6;
+            backdrop-filter: blur(2px);
+            border-radius: 1.6rem;
+            padding: 1.8rem 1.6rem;
+            border: 1px solid rgba(50, 130, 120, 0.10);
+            box-shadow: 0 4px 12px rgba(0, 60, 55, 0.04);
+        }
+
+        .insight-box h4 {
+            font-size: 1.1rem;
+            font-weight: 530;
+            color: #0f5151;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .insight-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .insight-box li {
+            position: relative;
+            padding-left: 1.4rem;
+            margin-bottom: 0.65rem;
+            color: #1f3d44;
+            font-size: 0.95rem;
+        }
+
+        .insight-box li::before {
+            content: '·';
+            position: absolute;
+            left: 0.1rem;
+            color: #2d9188;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .note-border {
+            border-left: 3px solid #48b5ab;
+            padding-left: 1rem;
+            background: #f6fcfb;
+            border-radius: 0 14px 14px 0;
+        }
+
+        .note-border p {
+            font-size: 0.95rem;
+            color: #1d4d4d;
+        }
+
+        .note-border a {
+            color: #0f7269;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-weight: 500;
+        }
+
+        .note-border a:hover {
+            color: #0a524b;
+        }
+
+        .faq-mini {
+            margin: 2.8rem 0 1.5rem;
+            border-top: 1px solid rgba(60, 130, 120, 0.08);
+            padding-top: 2rem;
+        }
+
+        .faq-mini details {
+            background: #ffffffcc;
+            backdrop-filter: blur(1px);
+            border-radius: 1.2rem;
+            padding: 0.8rem 1.4rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid #daece9;
+            transition: 0.15s;
+        }
+
+        .faq-mini details[open] {
+            background: white;
+            box-shadow: 0 2px 12px rgba(0, 80, 70, 0.04);
+        }
+
+        .faq-mini summary {
+            font-weight: 510;
+            color: #0b4a4a;
+            cursor: pointer;
+            padding: 0.3rem 0;
+            font-size: 1rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-mini summary::before {
+            content: '▹';
+            color: #389f93;
+            font-size: 1.1rem;
+            margin-right: 0.6rem;
+            transition: transform 0.15s;
+        }
+
+        .faq-mini details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-mini .answer {
+            padding: 0.6rem 0 0.2rem 1.6rem;
+            color: #1d474a;
+            font-size: 0.93rem;
+            border-left: 2px solid #b4ddd6;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6d8f8b;
+            margin-top: 2.2rem;
+            border-top: 1px solid #d3e5e2;
+            padding-top: 1.8rem;
+            letter-spacing: 0.01em;
+        }
+
+        @media (max-width: 680px) {
+            .hero-unit {
+                padding: 2.4rem 1.3rem 2rem;
+                border-radius: 2rem 2rem 1.2rem 1.2rem;
+                margin-top: 1.2rem;
+            }
+
+            .hero-unit h1 {
+                font-size: 1.9rem;
+            }
+
+            .hero-unit .sub {
+                font-size: 1rem;
+            }
+
+            .double-section {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .grid-cards {
+                gap: 1.2rem;
+            }
+
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 440px) {
+            body {
+                padding: 0 0.6rem 2rem;
+            }
+            .hero-unit h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- HERO 摘要 -->
+    <div class="hero-unit">
+        <h1>雷速 · 信息整合与呈现</h1>
+        <div class="sub">
+            围绕赛事、数据与实时动态，<a href="https://zh-plus-leisu.com">雷速官网</a> 提供简洁明晰的资讯聚合方式。不渲染情绪，只还原结构化的内容脉络，帮助使用者更轻松地获取自己关注的信息。
+        </div>
+    </div>
+
+    <!-- 网格卡片 – 亮点与特点 -->
+    <div class="grid-cards">
+        <div class="card">
+            <div class="card-icon">&#9650;</div>
+            <h3>结构化摘要</h3>
+            <p>将零散动态按照时间、类别、关键节点进行拆分，以干净卡片和条目呈现，降低阅读负担。</p>
+            <span class="tag">分层展示</span>
+        </div>
+        <div class="card">
+            <div class="card-icon">&#9670;</div>
+            <h3>多维度筛选</h3>
+            <p>支持按联赛、队伍、日期、类型过滤，避免信息过载，只保留当前需要的范围。</p>
+            <span class="tag">灵活视角</span>
+        </div>
+        <div class="card">
+            <div class="card-icon">&#9641;</div>
+            <h3>轻量化界面</h3>
+            <p>重视加载效率与移动端适配，内容层级清晰，不堆砌冗余模块，操作反馈直接。</p>
+            <span class="tag">流畅体验</span>
+        </div>
+        <div class="card">
+            <div class="card-icon">&#9671;</div>
+            <h3>持续迭代</h3>
+            <p>团队根据使用反馈定期调整功能细节。不追求大而全，更关注实用与稳定性。</p>
+            <span class="tag">渐进优化</span>
+        </div>
+    </div>
+
+    <!-- 使用建议 + 可信提示 -->
+    <div class="double-section">
+        <div class="insight-box">
+            <h4>◈ 使用建议</h4>
+            <ul>
+                <li>从常用联赛或队伍标签切入，快速建立个人信息流。</li>
+                <li>利用筛选组合，对比不同时间段的统计差异。</li>
+                <li>移动端可横滑浏览时间轴卡片，操作自然。</li>
+                <li>定期清理缓存可保持列表加载速度。</li>
+            </ul>
+        </div>
+        <div class="insight-box note-border">
+            <h4>◈ 可信访问说明</h4>
+            <p><a href="https://zh-plus-leisu.com">雷速官网</a> 所呈现的内容均来自公开数据与第三方授权接口，不提供任何预测、保证或诱导性建议。所有信息仅供个人参考，使用者应结合自身判断做出决策。平台不存储敏感隐私数据，无隐含追踪逻辑。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 轻量 -->
+    <div class="faq-mini">
+        <details>
+            <summary>雷速主要适用于哪些场景？</summary>
+            <div class="answer">日常关注赛事动向、多联赛数据对比、快速回顾近期关键事件。适合资讯型用户与轻度研究需求。</div>
+        </details>
+        <details>
+            <summary>是否需要注册或提供个人信息？</summary>
+            <div class="answer">浏览公开内容无需注册。部分个性化功能（如收藏、自定义筛选组）可选本地存储，不强制上传账户信息。</div>
+        </details>
+        <details>
+            <summary>数据更新频率如何？</summary>
+            <div class="answer">核心数据跟随源接口分钟级更新，非实时流。部分统计类信息延迟在数分钟至数小时不等，以页面标注时间为准。</div>
+        </details>
+    </div>
+
+    <!-- 结尾自然引用 -->
+    <div style="margin: 2rem 0 1rem; text-align: center; background: #e5f3f0; border-radius: 2rem; padding: 0.8rem 1rem;">
+        <span style="color: #0b534a; font-size: 0.95rem;">如需了解更多细节，可浏览 <a href="https://zh-plus-leisu.com" style="color:#0b6b60; font-weight:500; text-decoration:underline; text-underline-offset:3px;">雷速官网</a> 上的完整内容。</span>
+    </div>
+
+    <div class="footer-note">
+        页面基于公开产品信息整理 · 不构成任何形式引导
+    </div>
+
+</div>
+</body>
+</html>
